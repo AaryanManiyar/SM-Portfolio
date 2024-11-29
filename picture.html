@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Slideshow</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+
+      font-family: Arial, sans-serif;
+      background-color: #010e1b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+    }
+
+    .slideshow-container {
+        margin-top: 200px;
+        margin-left: 150px;
+        position: relative;
+        max-width: 700px;
+        overflow: hidden;
+        border: 4px solid #ccc;
+        border-radius: 10px;
+        background-color: white;
+    }
+
+    .slideshow-inner {
+      display: flex;
+      height: 550px;
+      width: 700px;
+      transition: transform 1s ease-in-out;
+    }
+
+    .slideshow-inner img {
+      width: 100%;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+  <div class="slideshow-inner" id="slideshowInner">
+    <img src="assets/img/pictures/1.jpg" alt="Photo 1">
+    <img src="assets/img/pictures/2.jpg" alt="Photo 2">
+    <img src="assets/img/pictures/3.jpg" alt="Photo 3">
+    <img src="assets/img/pictures/4.jpg" alt="Photo 4">
+    <img src="assets/img/pictures/5.jpg" alt="Photo 5">
+    <img src="assets/img/pictures/6.jpg" alt="Photo 6">
+    <img src="assets/img/pictures/7.jpg" alt="Photo 7">
+    <img src="assets/img/pictures/8.jpg" alt="Photo 8">
+    <img src="assets/img/pictures/9.jpg" alt="Photo 9">
+    <img src="assets/img/pictures/10.jpg" alt="Photo 10">
+    <img src="assets/img/pictures/11.jpg" alt="Photo 11">
+    <img src="assets/img/pictures/12.jpg" alt="Photo 12">
+  </div>
+</div>
+
+<script>
+  const slideshowInner = document.getElementById('slideshowInner');
+  const totalImages = slideshowInner.children.length;
+
+  let currentIndex = 0;
+
+  function showNextSlide() {
+    currentIndex = (currentIndex + 1) % totalImages; // Cycle back to the first slide
+    const offset = -currentIndex * 100; // Calculate translateX offset
+    slideshowInner.style.transform = `translateX(${offset}%)`;
+  }
+
+  // Automatically transition slides every 5 seconds
+  setInterval(showNextSlide, 5000);
+</script>
+
+</body>
+</html>
